@@ -1,3 +1,5 @@
+package ordersystem.model;
+import java.util.UUID;
 public abstract class Product {
 
     private final UUID id;

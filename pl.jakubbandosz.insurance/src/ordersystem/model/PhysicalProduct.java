@@ -1,3 +1,7 @@
+package ordersystem.model;
+import java.util.UUID;
+
+
 public class PhysicalProduct extends Product {
 
     private final double weight;
