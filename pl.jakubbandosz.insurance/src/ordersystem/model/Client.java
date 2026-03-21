@@ -10,13 +10,13 @@ public class Client {
     private final String name;
     private final String surname;
     private final LocalDate birthDate;
-    private final String address;
+    private final Address address;
 
-    public Client(String name, String surname, LocalDate birthDate, String address) {
+    public Client(String name, String surname, LocalDate birthDate, Address address) {
         this(UUID.randomUUID(), name, surname, birthDate, address);
     }
 
-    private Client(UUID id, String name, String surname, LocalDate birthDate, String address) {
+    private Client(UUID id, String name, String surname, LocalDate birthDate, Address address) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -28,13 +28,13 @@ public class Client {
     public String getName() { return name; }
     public String getSurname() { return surname; }
     public LocalDate getBirthDate() { return birthDate; }
-    public String getAddress() { return address; }
+    public Address getAddress() { return address; }
 
     public int getAge() {
         return Period.between(birthDate, LocalDate.now()).getYears();
     }
 
-    public Client withAddress(String newAddress) {
+    public Client withAddress(Address newAddress) {
         if (newAddress == null) {
             throw new IllegalArgumentException("Address cannot be null");
         }
@@ -54,4 +54,17 @@ public class Client {
         }
         return new Client(this.id, this.name, this.surname, newBirthDate, this.address);
     }
+
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "ClientID=" + id +
+                ", Name=" + name +
+                ", Surname=" + surname +
+                ", Birthdate=" + birthDate +
+                ", Addres=" + address.getStreet() +", " + address.getCity()+ ", " + address.getCountry() + ", " + address.getState() + ", " + address.getZipCode() +
+                '}';
+    }
 }
+
