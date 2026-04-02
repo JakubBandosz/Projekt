@@ -8,4 +8,12 @@ public class PaymentRepository {
     public void save(Payment payment) {
         payments.put(payment.getId(), payment);
     }
+
+    public Payment findById(UUID id) {
+        return payments.get(id);
+    }
+
+    public List<Payment> findAll() {
+        return new ArrayList<>(payments.values());
+    }
 }
